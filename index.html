@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="AttestFlow — evidence-first form completion with a structural human-attestation boundary, built for the WebMCP Challenge." />
+  <title>AttestFlow — Evidence before attestation</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="eyebrow">WEBMCP CHALLENGE PROTOTYPE</div>
+      <h1>AttestFlow</h1>
+      <p class="lede">Agents can do the paperwork. Humans keep the promises.</p>
+      <p class="sub">AttestFlow lets an agent inspect evidence, draft factual fields, and report readiness—while structurally withholding eligibility claims, certifications, terms acceptance, signatures, and final submission.</p>
+      <div id="webmcp-status" class="api-status" data-state="loading">Detecting WebMCP…</div>
+    </header>
+
+    <section class="grid two">
+      <article class="panel">
+        <div class="panel-head"><span>1</span><h2>Evidence-backed facts</h2></div>
+        <p class="muted">Agent-writable only when direct evidence exists.</p>
+        <div class="fields">
+          <div class="field" data-field="applicant_name"><div><strong>Applicant name</strong><span class="field-value">Not drafted</span></div><small class="field-source">Evidence: —</small></div>
+          <div class="field" data-field="organization"><div><strong>Organization</strong><span class="field-value">Not drafted</span></div><small class="field-source">Evidence: —</small></div>
+          <div class="field" data-field="project_title"><div><strong>Project title</strong><span class="field-value">Not drafted</span></div><small class="field-source">Evidence: —</small></div>
+          <div class="field" data-field="project_summary"><div><strong>Project summary</strong><span class="field-value">Not drafted</span></div><small class="field-source">Evidence: —</small></div>
+        </div>
+        <button id="demo-agent-draft" class="secondary">Simulate agent drafting supported facts</button>
+      </article>
+
+      <article class="panel protected">
+        <div class="panel-head"><span>2</span><h2>Human-only attestations</h2></div>
+        <p class="muted">These controls are deliberately absent from every WebMCP tool schema.</p>
+        <label class="attest"><input id="eligibility_attestation" type="checkbox" /> <span>I meet the eligibility requirements.</span></label>
+        <label class="attest"><input id="accuracy_attestation" type="checkbox" /> <span>I certify the information is accurate.</span></label>
+        <label class="attest"><input id="terms_attestation" type="checkbox" /> <span>I agree to the official terms.</span></label>
+        <div class="boundary"><strong>Structural boundary</strong><p>No tool named submit, attest, sign, certify, agree, approve, or accept-terms is registered.</p></div>
+      </article>
+    </section>
+
+    <section class="panel readiness">
+      <div class="panel-head"><span>3</span><h2>Readiness certificate</h2></div>
+      <div class="readiness-row"><div id="readiness-badge">NOT_READY</div><p id="readiness-detail"></p></div>
+      <button id="human-submit" class="primary" disabled>Human: finalize demo</button>
+      <p id="final-message" class="success-message"></p>
+    </section>
+
+    <section class="grid two lower">
+      <article class="panel">
+        <h2>Exposed WebMCP contract</h2>
+        <code>list_form_requirements()</code>
+        <code>list_evidence({ field? })</code>
+        <code>draft_from_evidence({ fields })</code>
+        <code>validate_readiness()</code>
+        <p class="muted top">The agent can discover what is required, inspect evidence, draft only supported facts, and know exactly when a human must take over.</p>
+      </article>
+      <article class="panel">
+        <h2>Audit trail</h2>
+        <pre id="audit-log">No agent actions yet.</pre>
+      </article>
+    </section>
+
+    <footer>
+      <strong>AttestFlow</strong> — evidence-first automation with calibrated authority. Demo data only; no real application is submitted by this site.
+    </footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
